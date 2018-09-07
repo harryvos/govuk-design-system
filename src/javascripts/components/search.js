@@ -48,7 +48,8 @@ Search.prototype.renderResults = function () {
   }
   var searchResults = searchIndex.query(function (q) {
     q.term(lunr.tokenizer(searchQuery), {
-      wildcard: lunr.Query.wildcard.TRAILING
+      wildcard: lunr.Query.wildcard.TRAILING,
+      presence: lunr.Query.presence.REQUIRED
     })
   })
   matchedResults = searchResults.map(function (result) {
