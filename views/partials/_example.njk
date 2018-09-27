@@ -58,32 +58,21 @@
       {% set macroOptionsHTML %}
 
         <p>
-          If you’re using Nunjucks macros in production be aware that using html
-          options, or ones ending with Html can be a <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">security risk</a>.
-          Read more about it in the <a href="https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning">Nunjucks documentation</a>.
+          If you’re using Nunjucks macros in production be aware that using html options, or ones ending with Html can be a <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">security risk</a>. Read more about it in the <a href="https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning">Nunjucks documentation</a>.
         </p>
 
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-visually-hidden">
-              Nunjucks macro options
-          </caption>
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="col">Name</th>
-              <th class="govuk-table__header" scope="col">Type</th>
-              <th class="govuk-table__header" scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            {% for group in macroOptions %}
+        {% for group in macroOptions %}
 
-              {% if group.groupName != "" %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell" colspan="3">
-                    <h3 class="govuk-!-margin-top-5" id="nunjucks-macro-options-{{group.groupName}}">{{group.groupName}}</h3>
-                  </td>
-                </tr>
-              {% endif %}
+          <table class="govuk-table" id="nunjucks-macro-options-{{group.groupName}}">
+            <caption class="govuk-table__caption">{{ group.groupName }}</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Type</th>
+                <th class="govuk-table__header" scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
 
               {% for option in group.options %}
                 <tr class="govuk-table__row">
@@ -92,11 +81,9 @@
                   <td class="govuk-table__cell ">{{option.description | safe}}</td>
                 </tr>
               {% endfor %}
-
-            {% endfor %}
-
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        {% endfor %}
 
       {% endset %}
 
