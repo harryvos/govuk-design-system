@@ -92,6 +92,8 @@
   margin-bottom: 0;
   border: 0;
   font-size: inherit;
+  overflow: auto;
+  max-width: 100%;
 }
 
 // Ensure the copy button does not obstruct the examples.
